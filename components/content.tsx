@@ -28,7 +28,7 @@ export function Content() {
               style={{ transform: 'rotate(-3deg)' }}
             >
               <Image
-                src="/bgd.jpg?height=400&width=600"
+                src="/outreach.jpeg?height=400&width=600"
                 alt="Team working"
                 fill
                 className="object-cover"
@@ -51,8 +51,8 @@ export function Content() {
               className="absolute bottom-0 right-0 bg-[#B3E3E9] rounded-full p-6 text-center shadow-xl"
               style={{ transform: 'rotate(12deg)' }}
             >
-              <span className="block text-xs font-medium text-[#1A2B2B]">PROJECTS LAUNCHED</span>
-              <span className="block text-3xl font-bold text-[#1A2B2B]">128</span>
+              <span className="block text-xs font-medium text-[#1A2B2B]">COMMUNITY OUTREACH</span>
+              <span className="block text-3xl font-bold text-[#1A2B2B]">4+</span>
             </div>
           </div>
         </div>
