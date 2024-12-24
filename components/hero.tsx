@@ -43,7 +43,7 @@ export function Hero() {
           </div>
           <div className="flex items-center md:hidden">
             <Link href="/contact" className="mr-4 inline-block bg-red-500 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-red-400 transition duration-300">
-              Join Us
+              Contact Us
             </Link>
             <button 
               className="text-white z-20"
@@ -64,7 +64,7 @@ export function Hero() {
           </ul>
           <div className="hidden md:block">
             <Link href="/contact" className="inline-block bg-red-500 text-white px-8 py-3 rounded-full text-sm font-semibold hover:bg-red-400 transition duration-300">
-              Join Us
+              Contact Us
             </Link>
           </div>
         </nav>
