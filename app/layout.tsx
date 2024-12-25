@@ -1,5 +1,13 @@
 import { Sedgwick_Ave, Manrope } from 'next/font/google'
 import './globals.css'
+import { Header } from '@/components/Header'
+import Footer from '@/components/Footer'
+import { Providers } from '@/components/Providers'
+
+export const metadata = {
+  title: 'Living Faith Church - Ilupeju Ekiti',
+  description: 'Welcome to Living Faith Church in Ilupeju Ekiti. Join us in worship, community, and service as we grow together in faith.',
+}
 
 const protestRevolution = Sedgwick_Ave({ 
   weight: '400',
@@ -21,7 +29,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${protestRevolution.variable} ${outfit.variable}`}>
-      <body className={outfit.className}>{children}</body>
+      <body className={outfit.className}>
+        <Providers>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
+      </body>
     </html>
   )
 }
+

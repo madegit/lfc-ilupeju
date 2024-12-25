@@ -7,17 +7,17 @@ export function Content() {
         <div className="grid md:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
           <div className="space-y-8">
             <h2 className="text-4xl md:text-6xl font-bold">
-              <span className="text-yellow-400">Where faith meets family.</span>
+              <span className="text-yellow-400 font-protest-revolution">Where faith meets family.</span>
             </h2>
             
             <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
               <p>
-                Join us for uplifting worship, engaging activities, and impactful community outreach.
+                Welcome to Living Faith Church, Ilupeju Ekiti, where faith meets family. We are committed to spreading the love of Christ through worship, community, and impactful service.
               </p>
               
            
               <p>
-                 Discover service times, upcoming events, and more—all in one place.
+                Join us in celebrating God’s grace and building a stronger community together.
               </p>
             </div>
           </div>
@@ -28,7 +28,7 @@ export function Content() {
               style={{ transform: 'rotate(-3deg)' }}
             >
               <Image
-                src="/outreach.jpeg?height=400&width=600"
+                src="/pastor.jpg?height=400&width=600"
                 alt="Team working"
                 fill
                 className="object-cover"
@@ -40,7 +40,7 @@ export function Content() {
               style={{ transform: 'rotate(2deg)' }}
             >
               <Image
-                src="/community.jpeg?height=400&width=600"
+                src="/community.jpg?height=400&width=600"
                 alt="Team photo"
                 fill
                 className="object-cover"
@@ -48,11 +48,11 @@ export function Content() {
             </div>
             
             <div 
-              className="absolute bottom-0 right-0 bg-[#B3E3E9] rounded-full p-6 text-center shadow-xl"
+              className="absolute bottom-0 right-0 bg-red-500 rounded-full p-6 text-center shadow-xl"
               style={{ transform: 'rotate(12deg)' }}
             >
-              <span className="block text-xs font-medium text-[#1A2B2B]">COMMUNITY OUTREACH</span>
-              <span className="block text-3xl font-bold text-[#1A2B2B]">4+</span>
+              <span className="block text-xs font-medium text-white">COMMUNITY OUTREACH</span>
+              <span className="block text-3xl font-bold text-white">❤ 4+</span>
             </div>
           </div>
         </div>
