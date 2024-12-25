@@ -162,7 +162,7 @@ export default function EditEvent() {
             <div className="flex justify-center">
               <Button
                 type="submit"
-                className="rounded-xl bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 transition duration-300 ease-in-out transform hover:scale-105 max-w-xs w-full"
+                className="rounded-xl bg-red-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 transition duration-300 ease-in-out transform hover:scale-105 max-w-xs w-full"
               >
                 <Save className="w-5 h-5 mr-2" />
                 Save Changes

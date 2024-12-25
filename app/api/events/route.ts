@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Event from '@/models/Event';
 import { getServerSession } from 'next-auth/next';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '../auth/[...nextauth]/auth';
 
 export async function GET() {
   try {
@@ -61,3 +61,4 @@ export async function DELETE(request: Request) {
     return NextResponse.json({ error: 'Error deleting event' }, { status: 500 });
   }
 }
+
