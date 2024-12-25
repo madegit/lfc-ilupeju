@@ -7,7 +7,16 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { format } from "date-fns";
 import { PlusCircle, Edit, Trash2 } from "lucide-react";
 
-async function fetchEvents() {
+type Event = {
+  _id: string;
+  title: string;
+  description: string;
+  date: string; // ISO string format
+  time: string;
+  location: string;
+};
+
+async function fetchEvents(): Promise<Event[]> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/events`, { cache: "no-store" });
   if (!res.ok) {
     throw new Error("Failed to fetch events");
@@ -16,7 +25,7 @@ async function fetchEvents() {
 }
 
 export default function Home() {
-  const [events, setEvents] = useState<any[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
 
   useEffect(() => {
     async function loadEvents() {

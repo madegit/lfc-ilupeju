@@ -28,7 +28,8 @@ export function UpcomingEvents() {
         }
         const data = await response.json()
         setEvents(data)
-      } catch (err) {
+      } catch {
+        // Removed unused `err` variable
         setError('Failed to load events. Please try again later.')
       } finally {
         setLoading(false)
@@ -78,7 +79,7 @@ export function UpcomingEvents() {
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tighter">{event.title}</h3>
                   <p className="text-sm text-gray-600 leading-snug tracking-tight">{event.description.substring(0, 60)}...</p>
-                      </div>
+                </div>
               </div>
               <Button 
                 variant="ghost" 
@@ -96,4 +97,3 @@ export function UpcomingEvents() {
     </div>
   )
 }
-
