@@ -1,32 +1,32 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-// Extend the global object type to include the mongoose property
 declare global {
+  // eslint-disable-next-line no-var
   var mongoose: {
     conn: typeof mongoose | null;
     promise: Promise<typeof mongoose> | null;
   };
 }
 
-// Define the MongoDB connection URI
-const MONGODB_URI = process.env.MONGODB_URI!;
+const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  throw new Error(
-    "Please define the MONGODB_URI environment variable inside .env.local"
-  );
+  throw new Error('Please define the MONGODB_URI environment variable inside .env.local');
 }
 
-// Use a cached global variable to reuse the connection
-let cached = global.mongoose;
+interface CachedConnection {
+  conn: typeof mongoose | null;
+  promise: Promise<typeof mongoose> | null;
+}
+
+let cached = global.mongoose as CachedConnection;
 
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-async function dbConnect() {
+async function dbConnect(): Promise<typeof mongoose> {
   if (cached.conn) {
-    // If a connection already exists, return it
     return cached.conn;
   }
 
@@ -35,11 +35,8 @@ async function dbConnect() {
       bufferCommands: false,
     };
 
-    // Create a new connection promise
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
-      cached.conn = mongoose;
-      return mongoose;
-    });
+    // Since we check MONGODB_URI existence above, we can safely assert it's a string
+    cached.promise = mongoose.connect(MONGODB_URI as string, opts);
   }
 
   try {
