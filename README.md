@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Living Faith Church - Ilupeju Ekiti Website Project
 
-## Getting Started
+Welcome to the official repository for the **Living Faith Church - Ilupeju Ekiti** website! This project was developed as a volunteer initiative by **[Nairable](https://nairable.com)** to support the church’s mission of community engagement and spiritual growth.
 
-First, run the development server:
+## 🌟 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Dynamic Home Page**: Includes the latest announcements, service times, and quick links for easy navigation.
+- **About Us**: A dedicated page showcasing the church’s history, mission, core values, and leadership team.
+- **Upcoming Events**: Detailed listings of church events with dates, times, and descriptions.
+- **Gallery**: A visual representation of past events, activities, and services.
+- **Ongoing Projects**: Highlights of current church initiatives, outreach programs, and fundraising efforts.
+- **Contact Form**: Easy access for visitors to get in touch with the church.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Technology Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Tailwind CSS and Next.js
+- **Backend**: Laravel Framework with PHP
+- **Database**: MySQL
+- **Deployment**: Optimized for fast load times and cross-browser compatibility
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🤝 Volunteered By
 
-## Learn More
+This project was proudly developed by **[Nairable](https://nairable.com)**, a digital solutions provider specializing in product design, web development, branding, and digital marketing. We believe in empowering communities through technology.
 
-To learn more about Next.js, take a look at the following resources:
+## 📩 Need a Similar Website for Your Church?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+If your church or organization is interested in having a professional and dynamic website like this one, feel free to contact us. Let’s collaborate to bring your vision to life!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Contact Us Here**: [Message Us on WhatsApp](https://wa.me/message/HZ7KP2RUZNY2G1)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🙏 Acknowledgments
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+We are grateful to the leadership and members of **Living Faith Church - Ilupeju Ekiti** for their trust and collaboration on this project. May this website serve as a platform to amplify their impact and spread God’s word.
+
+---
+
+### 🚀 How to Contribute
+
+We welcome contributions to improve this website! Here’s how you can help:
+1. Fork this repository.
+2. Make your changes or add new features.
+3. Submit a pull request for review.
+
+---
+
+### 📄 License
+
+This project is open-source and available under the **MIT License**. Feel free to use it as a reference or template for similar projects.
+
+---
+
+Thank you for visiting this repository! If you have any feedback, questions, or need assistance, don’t hesitate to reach out to us.
+
+**Developed with ❤️ by [Nairable](https://nairable.com)**
