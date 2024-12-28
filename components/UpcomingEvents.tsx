@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Plus, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { addToCalendar } from '@/lib/calendar'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 interface Event {
   _id: string
@@ -104,13 +104,12 @@ export function UpcomingEvents() {
               }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             >
-              {events.map((event, index) => (
+              {events.map((event) => (
                 <motion.div
                   key={event._id}
                   className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4"
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
                   transition={{ duration: 0.5 }}
                 >
                   <div className="bg-white bg-opacity-95 backdrop-filter backdrop-blur-md rounded-2xl shadow-sm p-6 flex flex-col h-full">
@@ -138,7 +137,7 @@ export function UpcomingEvents() {
           <Button
             variant="outline"
             size="icon"
-            className="absolute top-1/2 -left-1  shadow-md transform -translate-y-1/2 -translate-x-1/2 rounded-full"
+            className="absolute top-1/2 -left-1 shadow-md transform -translate-y-1/2 -translate-x-1/2 rounded-full"
             onClick={handlePrev}
           >
             <ChevronLeft className="h-4 w-4" />
@@ -152,13 +151,14 @@ export function UpcomingEvents() {
             <ChevronRight className="h-4 w-4" />
           </Button>
           <div className="flex justify-center mt-4">
-            {Array.from({ length: totalSlides }).map((_, index) => (
+            {[...Array(totalSlides)].map((_, slideIndex) => (
               <button
-                key={index}
+                key={slideIndex}
                 className={`h-2 w-2 rounded-full mx-1 ${
-                  Math.floor(currentIndex / visibleCards) === index ? 'bg-gray-800' : 'bg-gray-300'
+                  Math.floor(currentIndex / visibleCards) === slideIndex ? 'bg-gray-800' : 'bg-gray-300'
                 }`}
-                onClick={() => setCurrentIndex(index * visibleCards)}
+                onClick={() => setCurrentIndex(slideIndex * visibleCards)}
+                aria-label={`Go to slide ${slideIndex + 1}`}
               />
             ))}
           </div>
@@ -167,4 +167,3 @@ export function UpcomingEvents() {
     </div>
   )
 }
-
