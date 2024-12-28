@@ -5,7 +5,6 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { User, Lock } from 'lucide-react';
 import { Button } from "@/components/ui/button"
-import { Alert, AlertDescription } from "@/components/ui/alert"
 
 export default function Login() {
   const [isSigningIn, setIsSigningIn] = useState(false);
@@ -57,9 +56,9 @@ export default function Login() {
         </h2>
         <div className="bg-white rounded-2xl shadow-sm p-8 max-w-md mx-auto">
           {error && (
-            <Alert variant="destructive" className="mb-6">
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
+            <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg">
+              {error}
+            </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-6" method="POST">
