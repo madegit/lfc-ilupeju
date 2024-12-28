@@ -5,27 +5,47 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { User, Lock } from 'lucide-react';
 import { Button } from "@/components/ui/button"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 
 export default function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [isSigningIn, setIsSigningIn] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
     setIsSigningIn(true);
-    const result = await signIn('credentials', {
-      username,
-      password,
-      redirect: false,
-    });
 
-    if (result?.error) {
-      alert(result.error);
+    try {
+      // Get form data securely using FormData
+      const formData = new FormData(e.currentTarget);
+      const username = formData.get('username') as string;
+      const password = formData.get('password') as string;
+
+      // Validate inputs
+      if (!username || !password) {
+        throw new Error('Please fill in all fields');
+      }
+
+      const result = await signIn('credentials', {
+        username,
+        password,
+        redirect: false,
+      });
+
+      if (result?.error) {
+        // Generic error message to avoid revealing specific authentication details
+        setError('Invalid credentials. Please try again.');
+      } else if (result?.ok) {
+        // Successful login
+        router.push('/admin/add-event');
+        router.refresh(); // Refresh to update session
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'An unexpected error occurred');
+    } finally {
       setIsSigningIn(false);
-    } else {
-      router.push('/admin/add-event');
     }
   };
 
@@ -36,8 +56,13 @@ export default function Login() {
           Admin Login
         </h2>
         <div className="bg-white rounded-2xl shadow-sm p-8 max-w-md mx-auto">
-          
-          <form onSubmit={handleSubmit} className="space-y-6">
+          {error && (
+            <Alert variant="destructive" className="mb-6">
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
+
+          <form onSubmit={handleSubmit} className="space-y-6" method="POST">
             <div>
               <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1 tracking-tight">
                 Username
@@ -52,9 +77,9 @@ export default function Login() {
                   type="text"
                   required
                   className="focus:ring-yellow-500 focus:border-yellow-500 block w-full pl-10 pr-3 py-2 sm:text-sm border-gray-300 rounded-xl text-gray-900"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
                   autoComplete="username"
+                  spellCheck="false"
+                  autoCapitalize="none"
                 />
               </div>
             </div>
@@ -73,8 +98,6 @@ export default function Login() {
                   type="password"
                   required
                   className="focus:ring-yellow-500 focus:border-yellow-500 block w-full pl-10 pr-3 py-2 sm:text-sm border-gray-300 rounded-xl text-gray-900"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
                   autoComplete="current-password"
                 />
               </div>
@@ -93,4 +116,3 @@ export default function Login() {
     </div>
   );
 }
-
