@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Plus } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Plus, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { addToCalendar } from '@/lib/calendar'
+import { motion } from 'framer-motion'
 
 interface Event {
   _id: string
@@ -18,6 +19,8 @@ export function UpcomingEvents() {
   const [events, setEvents] = useState<Event[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const sliderRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     async function fetchEvents() {
@@ -29,7 +32,6 @@ export function UpcomingEvents() {
         const data = await response.json()
         setEvents(data)
       } catch {
-        // Removed unused `err` variable
         setError('Failed to load events. Please try again later.')
       } finally {
         setLoading(false)
@@ -44,16 +46,23 @@ export function UpcomingEvents() {
     const isToday = eventDate.toDateString() === today.toDateString()
     const dateLabel = isToday ? 'TODAY' : `${eventDate.getDate()} - ${eventDate.getDate() + 9} ${eventDate.toLocaleString('default', { month: 'short' }).toUpperCase()}`
 
-    let bgColor = 'bg-green-50'
-    if (isToday) bgColor = 'bg-blue-50'
-    else if (event.title.toLowerCase().includes('wool')) bgColor = 'bg-pink-50'
-    else if (event.title.toLowerCase().includes('light')) bgColor = 'bg-rose-50'
-
     return (
-      <div className={`flex flex-col items-center justify-center w-[100px] h-[72px] ${bgColor} rounded-xl`}>
-        <span className="text-xs font-medium text-gray-600 tracking-tight">{dateLabel}</span>
-        <span className="text-xl font-bold text-gray-900 tracking-tight">{event.time}</span>
+      <div className="bg-gray-100 rounded-md p-2 mb-4">
+        <span className="text-sm font-medium text-gray-600 block">{dateLabel}</span>
+        <span className="text-lg font-semibold text-gray-800 block">{event.time}</span>
       </div>
+    )
+  }
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? events.length - 1 : prevIndex - 1
+    )
+  }
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === events.length - 1 ? 0 : prevIndex + 1
     )
   }
 
@@ -71,29 +80,59 @@ export function UpcomingEvents() {
         <h2 className="text-4xl font-protest-revolution md:text-6xl font-bold text-yellow-500 my-8">
           Upcoming Events
         </h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {events.map((event) => (
-            <div key={event._id} className="bg-white rounded-2xl shadow-sm p-6 flex flex-col">
-              <div className="flex items-start gap-4 mb-4">
-                {getDateBox(event)}
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-1 tracking-tighter">{event.title}</h3>
-                  <p className="text-sm text-gray-600 leading-snug tracking-tight">{event.description.substring(0, 60)}...</p>
+        <div className="relative w-full max-w-4xl mx-auto">
+          <div className="overflow-hidden">
+            <motion.div
+              ref={sliderRef}
+              className="flex transition-all duration-300 ease-in-out"
+              animate={{
+                x: `${-currentIndex * 100}%`,
+              }}
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            >
+              {events.map((event) => (
+                <div key={event._id} className="flex-shrink-0 w-full sm:w-1/2 lg:w-1/3 p-4">
+                  <div className="bg-white rounded-lg shadow-md p-6 flex flex-col h-full">
+                    <div className="flex items-start gap-4 mb-4">
+                      {getDateBox(event)}
+                      <div className="flex-1 min-w-0 mb-4">
+                        <h3 className="text-xl font-semibold text-gray-800 mb-2">{event.title}</h3>
+                        <p className="text-sm text-gray-600">{event.description.substring(0, 100)}...</p>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      size="sm" 
+                      className="self-end mt-auto"
+                      onClick={() => addToCalendar(event)}
+                    >
+                      <Plus className="h-4 w-4 mr-1.5" />
+                      <span>Add to calendar</span>
+                    </Button>
+                  </div>
                 </div>
-              </div>
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                className="rounded-xl border border-gray-200 self-end mt-auto text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                onClick={() => addToCalendar(event)}
-              >
-                <Plus className="h-4 w-4 mr-1.5" />
-                <span className="tracking-tight">Add to calendar</span>
-              </Button>
-            </div>
-          ))}
+              ))}
+            </motion.div>
+          </div>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute top-1/2 left-0 transform -translate-y-1/2 -translate-x-1/2"
+            onClick={handlePrev}
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="absolute top-1/2 right-0 transform -translate-y-1/2 translate-x-1/2"
+            onClick={handleNext}
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
         </div>
       </div>
     </div>
   )
 }
+
