@@ -21,9 +21,9 @@ export function Hero() {
       <main className="flex-grow flex items-center justify-center relative z-10 px-4 md:px-0">
         <div className="text-center text-white">
           <h1 className="text-3xl md:text-3xl lg:text-4xl xl:text-6xl md:mb-6 tracking-tighter">
-            <span className="py-4">Welcome to </span> <br />
-            <span className="text-6xl py-2 md:text-6xl mb-6 lg:text-8xl xl:text-10xl font-protest-revolution text-yellow-400">Living Faith Church</span>
-            <br /> <span className="py-2">Ilupeju-Ekiti</span>
+            <span className="py-4 mb-10">Welcome to </span> <br />
+            <span className="text-6xl py-2 md:text-6xl mb-16 lg:text-8xl xl:text-10xl font-protest-revolution text-yellow-400 leading-tight">Living Faith Church</span>
+            <br /> <span className="py-2 mt-10">Ilupeju-Ekiti</span>
           </h1>
           <p className="text-lg md:text-xl lg:text-xl xl:text-2xl mx-10 tracking-tight my-4 md:mb-8">
             Experience Faith, Community, and Love.

@@ -26,7 +26,7 @@ export function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className={`fixed w-full z-50 ${isHomePage ? 'bg-transparent' : 'bg-transparent pb-20'}`}>
+    <header className={`fixed w-full z-50 ${isHomePage ? 'bg-transparent' : 'bg-transparent pb-20 backdrop-blur-md'}`}>
       <nav className="container mx-auto px-4 py-4 md:py-6 flex flex-wrap justify-between items-center">
         <Link href="/" className="flex items-center">
           <Image

@@ -24,7 +24,7 @@ export function Content() {
           
           <div className="relative h-[600px]">
             <div 
-              className="absolute top-0 left-0 w-[90%] h-72 rounded-2xl overflow-hidden shadow-xl"
+              className="absolute top-0 left-0 w-[90%] h-72 rounded-3xl overflow-hidden shadow-xl"
               style={{ transform: 'rotate(-3deg)' }}
             >
               <Image
@@ -36,7 +36,7 @@ export function Content() {
             </div>
             
             <div 
-              className="absolute top-64 left-10 w-[90%] h-72 rounded-2xl overflow-hidden shadow-xl"
+              className="absolute top-64 left-10 w-[90%] h-72 rounded-3xl overflow-hidden shadow-xl"
               style={{ transform: 'rotate(2deg)' }}
             >
               <Image

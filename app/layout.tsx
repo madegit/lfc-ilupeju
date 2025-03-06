@@ -1,4 +1,4 @@
-import { Sedgwick_Ave, Manrope } from 'next/font/google'
+import { Sedgwick_Ave, Parkinsans } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -16,7 +16,7 @@ const protestRevolution = Sedgwick_Ave({
   variable: '--font-protest-revolution',
 })
 
-const outfit = Manrope({ 
+const outfit = Parkinsans({ 
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-outfit',

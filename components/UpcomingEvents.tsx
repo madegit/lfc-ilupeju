@@ -58,7 +58,7 @@ export function UpcomingEvents() {
     else if (event.title.toLowerCase().includes('light')) bgColor = 'bg-rose-50'
 
     return (
-      <div className={`flex flex-col items-center justify-center w-[100px] h-[72px] ${bgColor} rounded-xl`}>
+      <div className={`flex flex-col items-center justify-center w-[100px] h-[72px] ${bgColor} rounded-xl border`}>
         <span className="text-xs font-medium text-gray-600 tracking-tight">{dateLabel}</span>
         <span className="text-xl font-bold text-gray-900 tracking-tight">{event.time}</span>
       </div>
@@ -89,9 +89,9 @@ export function UpcomingEvents() {
   }
 
   return (
-    <div className="bg-white py-24 bg-no-repeat bg-cover bg-[url('/events.jpg')] bg-center flex items-center justify-center" >
+    <div className="bg-white py-20 bg-no-repeat bg-cover bg-[url('/events.jpg')] bg-center flex items-center justify-center" >
       <div className="container mx-auto px-6 md:px-14">
-        <h2 className="text-5xl font-protest-revolution md:text-6xl font-bold text-yellow-500 my-8">
+        <h2 className="text-5xl font-protest-revolution md:text-6xl font-bold text-yellow-500 my-10">
           Upcoming Events
         </h2>
         <div className="relative w-full max-w-6xl mx-auto">
@@ -112,7 +112,7 @@ export function UpcomingEvents() {
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div className="bg-white bg-opacity-95 backdrop-filter backdrop-blur-md rounded-2xl shadow-sm p-6 flex flex-col h-full">
+                  <div className="bg-white bg-opacity-95 backdrop-filter backdrop-blur-md rounded-3xl shadow-sm p-6 flex flex-col h-full">
                     <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 mb-4">
                       {getDateBox(event)}
                       <div className="flex-1 min-w-0 text-center sm:text-left">

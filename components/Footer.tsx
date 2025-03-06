@@ -3,16 +3,16 @@ import Link from 'next/link'
 export default function Footer() {
   return (
     <footer className="bg-black text-white">
-      <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-8 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <h3 className="font-averia text-xl font-bold mb-4">Living Faith Church</h3>
+            <h3 className="text-xl font-bold mb-4">Living Faith Church</h3>
             <p className="text-sm">Ilupeju Ekiti, Nigeria</p>
             <p className="text-sm">Email: info@livingfaithchurch.com</p>
             <p className="text-sm">Phone: +234 123 456 7890</p>
           </div>
           <div>
-            <h4 className="font-averia text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link href="/about" className="text-sm hover:underline">About Us</Link></li>
               <li><Link href="/events" className="text-sm hover:underline">Events</Link></li>
@@ -21,7 +21,7 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="font-averia text-lg font-semibold mb-4">Connect With Us</h4>
+            <h4 className="text-lg font-semibold mb-4">Connect With Us</h4>
             <div className="flex space-x-4">
               <a href="#" className="text-white hover:text-gray-300">
                 <span className="sr-only">Facebook</span>
